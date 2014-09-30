@@ -29,6 +29,10 @@ alias valgrind="/usr/bin/valgrind -v --leak-check=full --show-reachable=yes --to
 export GREP_COLOR='1;32'
 alias tf='tail -f '
 
+export GIT_EDITOR=/usr/bin/vim
+export VISUAL=/usr/bin/vim
+export EDITOR=/usr/bin/vim
+
 # grep in *.cpp files
 alias fcc='find . -iname "*.c" -o -name "*.cpp" -o -name "*.cc" | xargs grep -ni --color=always '
 # grep in *.cpp files

@@ -41,6 +41,11 @@ alias fhh='find . -iname "*.h" | xargs grep -ni --color=always '
 # grep in files
 alias fcf='find . -iname "*" | xargs grep -ni --color=always '
 
+#GIT
+export GIT_EDITOR=/usr/bin/vim
+export VISUAL=/usr/bin/vim
+export EDITOR=/usr/bin/vim
+
 # Zsh settings for history
 export SVN_EDITOR=/usr/bin/vim 
 export HISTIGNORE="&:ls:[bf]g:exit:reset:clear:cd:cd ..:cd.."
