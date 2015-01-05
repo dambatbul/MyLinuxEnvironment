@@ -1,0 +1,60 @@
+# .bashrc
+
+# Srce global definitions
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+
+LS_COLORS='di=01;36'; export LS_COLORS
+ulimit -c unlimited >/dev/null 2>&1
+export SVN_EDITOR=/usr/bin/vim
+export MINICOM="-m -c on"
+
+alias valgrind="/usr/bin/valgrind -v --leak-check=full --show-reachable=yes --tool=memcheck --track-origins=yes --log-file=\"./valgrind_log\""
+
+export PATH=$PATH:/usr/local/bin:/home/jyh07/sh:.
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/lib64
+
+alias valgrind="/usr/bin/valgrind -v --leak-check=full --show-reachable=yes --tool=memcheck --track-origins=yes --log-file=\"./valgrind_log\""
+# User specific aliases and functions
+
+alias sl='ls -al'
+alias lstree='tree -aC ./ -I .svn'
+alias bin='cd ../out/Linux26'
+alias cdinc='cd ../include'
+alias cdsrc='cd ../src'
+alias ..='cd ../'
+alias ....='cd ../..'
+
+alias vcanstart='sudo ip link add type vcan'
+
+#create Virtual Serial Port 
+alias virserial='sudo socat -d -d pty,raw,echo=0 pty,raw,echo=0'
+
+alias tf='tail -f '
+# grep in *.c *cpp *cc files
+export GREP_COLOR='1;32'
+alias fcc='find . -iname "*.c" -o -name "*.cpp" -o -name "*.cc" | xargs grep -ni --color=always '
+# grep in *.cpp *.h files
+alias fch='find . -iname "*.h" -o -iname "*.c" -o -name "*.cpp" -o -name "*.cc" | xargs grep -ni --color=always '
+# grep in *.h files
+alias fhh='find . -iname "*.h" | xargs grep -ni --color=always '
+# grep in files
+alias fcf='find . -iname "*" | xargs grep -ni --color=always '
+
+# reboot / halt / poweroff
+alias reboot='sudo /sbin/reboot'
+alias poweroff='sudo /sbin/poweroff'
+alias halt='sudo /sbin/halt'
+alias shutdown='sudo /sbin/shutdown -h now'
+
+# oracle
+ORACLE_HOME=/usr/lib/oracle/11.2/client64
+PATH=$ORACLE_HOME/bin:$PATH
+LD_LIBRARY_PATH=$ORACLE_HOME/lib
+export ORACLE_HOME
+export LD_LIBRARY_PATH
+export PATH
+#sqlplus user/pass@localhost:1521/ora11
+alias orasql='rlwrap -f ~/.sqlcomp sqlplus'
+alias sysdba='sqlplus / as sysdba'

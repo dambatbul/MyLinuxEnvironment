@@ -1,0 +1,26 @@
+STR=$1
+shift
+
+for FILE in $*
+do
+        if [ $FILE -nt tags ];then
+                ctags -R .
+        fi
+
+        FILE=${FILE##./}
+        egrep -n "$STR" "$FILE" > temp.cgrep
+
+        if [ -s temp.cgrep ]; then
+                CLASS=${FILE##*/};CLASS=${CLASS%.*}
+
+                echo "$CLASS ------------------------------------"
+                echo $FILE
+
+                grep "$FILE" "tags" | awk -F"^" '{print $2}' | awk -F"$" '{print $1}' | grep -v "^$" | xargs -l1 -i{} fgrep -n {} $FILE >> temp.cgrep
+                sort -g temp.cgrep | uniq | egrep --color -B 1 "$STR"
+                echo
+        fi
+done
+rm -rf temp.cgrep
+
+
