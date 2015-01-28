@@ -21,6 +21,8 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
+export EDITOR=vim
+
 # Display Color setting
 LS_COLORS='di=01;35'; export LS_COLORS
 export PATH=$PATH
