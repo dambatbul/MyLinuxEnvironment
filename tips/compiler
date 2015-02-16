@@ -1,0 +1,10 @@
+ubuntu 14.01 64bit 아키텍쳐에서 32bit app 컴파일 및 실행하기
+sudo dpkg --add-architecture i386; sudo apt update
+sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
+sudo dpkg -i ia32-libs_1.0_all.deb 
+
+sudo apt-get install libc6-dev:i386 gcc:i386
+  - dependencies 에러시 해당 dependencies 설치
+    sudo apt-get install  cpp:i386
+    sudo apt-get install gcc-4.8:i386
+    이후 다시 설치

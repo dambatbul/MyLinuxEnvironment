@@ -1,0 +1,11 @@
+merge two git repositories
+---------------------------
+
+git clone git@gitorious/projA.git projA
+git clone git@gitorious/projB.git projB
+
+cd projB
+git remote add projA ../projA/
+git fetch projA 
+git merge projA/master
+git push
