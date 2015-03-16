@@ -8,3 +8,18 @@ sudo apt-get install libc6-dev:i386 gcc:i386
     sudo apt-get install  cpp:i386
     sudo apt-get install gcc-4.8:i386
     이후 다시 설치
+
+컴파일시 
+  - -m32 추가함
+  - -lgcc / -lgcc_s undefined error : 
+	>> sudo /sbin/ldconfig -p | grep libgcc
+
+	Does the output show that the is link to libgcc corresponds to paths that you have listed above?
+	A work around for you may be to add the link to the relevant library to your compile command e.g.
+
+	  g++ program.cpp -L /usr/lib/gcc/x86_64-linux-gnu/4.6/
+	Another may be to create a symbolic link to the library yourself.
+
+	  ln -s /usr/lib/gcc/x86_64-linux-gnu/4.6/libgcc_s.so /usr/lib/gcc/libgcc_s.so
+
+  - sudo apt-get install gcc-multilib
