@@ -23,6 +23,9 @@ fi
 
 export EDITOR=vim
 
+# enable case insensitive completion
+bind 'set completion-ignore-case on'
+
 # Display Color setting
 LS_COLORS='di=01;35'; export LS_COLORS
 export PATH=$PATH:$HOME/sh

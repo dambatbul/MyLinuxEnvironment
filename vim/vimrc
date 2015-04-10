@@ -3,6 +3,17 @@ set autoindent
 set shiftwidth=4
 set tabstop=4
 
+" VIM Vundle (refer to http://takhwan.blogspot.kr/)
+Plugin 'ctrlp.vim'
+Plugin 'fugitive.vim'
+Plugin 'Gundo'
+Plugin 'NERD_tree-Project'
+Plugin 'The-NERD-tree'
+map <F2> :NERDTreeToggle<CR>
+map <F4> :GundoToggle<CR>
+
+
+
 " Refered at http://vim.wikia.com/wiki/Improved_Hex_editing
 nnoremap <C-H> :Hexmode<CR>
 ""inoremap <C-H> <Esc>:Hexmode<CR>
