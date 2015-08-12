@@ -9,3 +9,23 @@ git remote add projA ../projA/
 git fetch projA 
 git merge projA/master
 git push
+
+
+
+svn to git migration
+---------------------------
+1. git에 새로운 프로젝트를 만든 후 git repository를 받아오기
+
+2. 받아온 git 프로젝트로 이동 후 config 설정(Optional)
+git config --global user.name "xxx"
+git config --global user.email "xxx@gridwiz.com"
+
+3. 아래의 명령을 통해 svn repository 설정
+git svn init http://subversion/repo --no-metadata
+
+4 svn 저장소의 소스 가져오기
+git svn fetch
+
+5. git 저장소 업데이트 하기
+git push --set-upstream origin master
+
