@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/home/gridwiz/gridwiz/Der/Team_workerbee/src/VV11'
+let g:netrw_dirhist_2='/home/gridwiz/gridwiz/Der/Der'
+let g:netrw_dirhist_3='/home/gridwiz/gridwiz/gwEvSimulator'
+let g:netrw_dirhist_4='/home/gridwiz/gridwiz/EVCharging/markab'
+let g:netrw_dirhist_5='/home/gridwiz/gridwiz/EVCharging/gwev_core/GWEV'
+let g:netrw_dirhist_6='/home/gridwiz/.vim/bundle/Vundle.vim'

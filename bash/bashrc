@@ -55,6 +55,7 @@ LD_LIBRARY_PATH=$ORACLE_HOME/lib
 export ORACLE_HOME
 export LD_LIBRARY_PATH
 export PATH
+
 #sqlplus user/pass@localhost:1521/ora11
 alias orasql='rlwrap -f ~/.sqlcomp sqlplus'
 alias sysdba='sqlplus / as sysdba'

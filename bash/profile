@@ -24,7 +24,7 @@ fi
 export EDITOR=vim
 
 # enable case insensitive completion
-bind 'set completion-ignore-case on'
+set completion-ignore-case on
 
 # Display Color setting
 LS_COLORS='di=01;35'; export LS_COLORS
@@ -59,6 +59,9 @@ alias poweroff='sudo /sbin/poweroff'
 alias halt='sudo /sbin/halt'
 alias shutdown='sudo /sbin/shutdown -h now'
 
+alias orasql='rlwrap -f ~/.sqlcomp sqlplus'
+alias sysdba='sqlplus / as sysdba'
+
 # oracle
 ORACLE_HOME=/usr/lib/oracle/11.2/client64
 PATH=$ORACLE_HOME/bin:$PATH
@@ -66,6 +69,15 @@ LD_LIBRARY_PATH=$ORACLE_HOME/lib
 export ORACLE_HOME
 export LD_LIBRARY_PATH
 export PATH
-#sqlplus user/pass@localhost:1521/ora11
-alias orasql='rlwrap -f ~/.sqlcomp sqlplus'
 alias sysdba='sqlplus / as sysdba'
+alias drora='sqlplus gw_oadr/gwdhfkzmf@gwdevi.gridwiz.com:2521/XE'
+alias sysora='sqlplus sys/gwdhfkzmf@gwdevi.gridwiz.com:2521/XE'
+
+#mysql
+alias devgems='rlwrap -f ~/.mysqlcomp mysql -u gems -p --host=211.119.131.94 GEMS'
+alias pmsdb='rlwrap -f ~/.mysqlcomp mysql -u pms -ppms --host=192.168.2.110 pmsdb'
+
+# \u -> user, \W is basename, the rest are terminal colors
+PS1='\[\e[0;35m\]\u\[\e[0;33m\]@\[\e[1;34m\]Notebook:\[\e[0;33m\]\W \[\e[0m\]\$ '
+
+

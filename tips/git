@@ -1,3 +1,4 @@
+---------------------------
 merge two git repositories
 ---------------------------
 
@@ -12,6 +13,7 @@ git push
 
 
 
+---------------------------
 svn to git migration
 ---------------------------
 1. git에 새로운 프로젝트를 만든 후 git repository를 받아오기
@@ -29,3 +31,20 @@ git svn fetch
 5. git 저장소 업데이트 하기
 git push --set-upstream origin master
 
+
+---------------------------
+원격에 dev-env-refactoring이라는 브랜치가 있는데 이걸 로컬로 가지고 오고 싶다면..
+---------------------------
+$ git checkout -b env origin/dev-env-refactoring
+Branch env set up to track remote branch dev-env-refactoring from origin.
+Switched to a new branch ‘env’
+$ git branch
+* env
+master
+$ git branch -a
+* env
+master
+remotes/origin/HEAD -> origin/master
+remotes/origin/dev-env-refactoring
+remotes/origin/gh-pages
+remotes/origin/master

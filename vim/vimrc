@@ -1,66 +1,159 @@
-set ts=4
+"set exrc
+set secure
 set autoindent
 set shiftwidth=4
+set softtabstop=4
+set noexpandtab
 set tabstop=4
+set incsearch
+"colorscheme desert
+syntax enable
+set background=dark
+let g:solarized_termtrans=1
+let g:solarized_visibility = "high"
+let g:solarized_contrast = "high"
+"if !has("gui_running")
+"	let g:solarized_termtrans=1
+"	let g:solarized_termcolors=256
+"endif
+colorscheme solarized
 
-" VIM Vundle (refer to http://takhwan.blogspot.kr/)
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" Pathogen load
+call pathogen#infect()
+call pathogen#helptags()
+
+filetype plugin indent on
+syntax on
+
+"for Python
+set foldmethod=indent
+set foldlevel=99
+
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+Plugin 'tpope/vim-fugitive'
+" Git plugin not hosted on GitHub
+Plugin 'git://git.wincent.com/command-t.git'
+" git repos on your local machine (i.e. when working on your own plugin)
+Plugin 'file:///home/gmarik/path/to/plugin'
+" The sparkup vim script is in a subdirectory of this repo called vim.
+" Pass the path to set the runtimepath properly.
+Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" Avoid a name conflict with L9
+Plugin 'user/L9', {'name': 'newL9'}
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+
+
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
 Plugin 'ctrlp.vim'
 Plugin 'fugitive.vim'
 Plugin 'Gundo'
 Plugin 'NERD_tree-Project'
 Plugin 'The-NERD-tree'
+Plugin 'highlight.vim'
+Plugin 'Syntastic'
+Plugin 'EasyMotion'
+Plugin 'Command-T'
+
+
+"" Gif config
+"nmap s <Plug>(easymotion-s2)
+"nmap t <Plug>(easymotion-t2)
+"
+"" Gif config
+"map  / <Plug>(easymotion-sn)
+"omap / <Plug>(easymotion-tn)
+"
+"" These `n` & `N` mappings are options. You do not have to map `n` & `N` to EasyMotion.
+"" Without these mappings, `n` & `N` works fine. (These mappings just provide
+"" different highlight method and have some other features )
+"map  n <Plug>(easymotion-next)
+"map  N <Plug>(easymotion-prev)
+"
+"hi EasyMotionTarget ctermbg=none ctermfg=green
+"hi EasyMotionShade  ctermbg=none ctermfg=blue
+"hi link EasyMotionTarget ErrorMsg
+"hi link EasyMotionShade  Comment
+"let g:EasyMotion_mapping_f = '_f'
+"let g:EasyMotion_mapping_T = '<C-T>'
+
 map <F2> :NERDTreeToggle<CR>
 map <F4> :GundoToggle<CR>
 
+" Press F3 to toggle highlighting on/off, and show current value.
+noremap <F3> :set hlsearch! hlsearch?<CR>
 
+let g:C_UseTool_cmake    = 'yes'
+let g:C_UseTool_doxygen  = 'yes'
 
-" Refered at http://vim.wikia.com/wiki/Improved_Hex_editing
-nnoremap <C-H> :Hexmode<CR>
-""inoremap <C-H> <Esc>:Hexmode<CR>
-vnoremap <C-H> :<C-U>Hexmode<CR>
-
-" ex command for toggling hex mode - define mapping if desired
-command -bar Hexmode call ToggleHex()
-
-" helper function to toggle hex mode
-function ToggleHex()
-  " hex mode should be considered a read-only operation
-  " save values for modified and read-only for restoration later,
-  " and clear the read-only flag for now
-  let l:modified=&mod
-  let l:oldreadonly=&readonly
-  let &readonly=0
-  let l:oldmodifiable=&modifiable
-  let &modifiable=1
-  if !exists("b:editHex") || !b:editHex
-    " save old options
-    let b:oldft=&ft
-    let b:oldbin=&bin
-    " set new options
-    setlocal binary " make sure it overrides any textwidth, etc.
-    let &ft="xxd"
-    " set status
-    let b:editHex=1
-    " switch to hex editor
-    %!xxd
-  else
-    " restore old options
-    let &ft=b:oldft
-    if !b:oldbin
-      setlocal nobinary
-    endif
-    " set status
-    let b:editHex=0
-    " return to normal editing
-    %!xxd -r
-  endif
-  " restore values for modified and read only state
-  let &mod=l:modified
-  let &readonly=l:oldreadonly
-  let &modifiable=l:oldmodifiable
-endfunction
-
-
+"" Refered at http://vim.wikia.com/wiki/Improved_Hex_editing
+"nnoremap <C-H> :Hexmode<CR>
+"""inoremap <C-H> <Esc>:Hexmode<CR>
+"vnoremap <C-H> :<C-U>Hexmode<CR>
+"
+"" ex command for toggling hex mode - define mapping if desired
+"command -bar Hexmode call ToggleHex()
+"
+"" helper function to toggle hex mode
+"function ToggleHex()
+"  " hex mode should be considered a read-only operation
+"  " save values for modified and read-only for restoration later,
+"  " and clear the read-only flag for now
+"  let l:modified=&mod
+"  let l:oldreadonly=&readonly
+"  let &readonly=0
+"  let l:oldmodifiable=&modifiable
+"  let &modifiable=1
+"  if !exists("b:editHex") || !b:editHex
+"    " save old options
+"    let b:oldft=&ft
+"    let b:oldbin=&bin
+"    " set new options
+"    setlocal binary " make sure it overrides any textwidth, etc.
+"    let &ft="xxd"
+"    " set status
+"    let b:editHex=1
+"    " switch to hex editor
+"    %!xxd
+"  else
+"    " restore old options
+"    let &ft=b:oldft
+"    if !b:oldbin
+"      setlocal nobinary
+"    endif
+"    " set status
+"    let b:editHex=0
+"    " return to normal editing
+"    %!xxd -r
+"  endif
+"  " restore values for modified and read only state
+"  let &mod=l:modified
+"  let &readonly=l:oldreadonly
+"  let &modifiable=l:oldmodifiable
+"endfunction
+"
+"
 " vim -b : edit binary using xxd-format!
 augroup Binary
   au!
@@ -73,3 +166,8 @@ augroup Binary
   au BufWritePost *.bin set nomod | endif
 augroup END
 
+
+augroup project
+    autocmd!
+    autocmd BufRead,BufNewFile *.h,*.c set filetype=c.doxygen
+augroup END
