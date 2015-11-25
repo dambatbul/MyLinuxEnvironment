@@ -74,7 +74,6 @@ alias drora='sqlplus gw_oadr/gwdhfkzmf@gwdevi.gridwiz.com:2521/XE'
 alias sysora='sqlplus sys/gwdhfkzmf@gwdevi.gridwiz.com:2521/XE'
 
 #mysql
-alias devgems='rlwrap -f ~/.mysqlcomp mysql -u gems -p --host=211.119.131.94 GEMS'
 alias pmsdb='rlwrap -f ~/.mysqlcomp mysql -u pms -ppms --host=192.168.2.110 pmsdb'
 
 # \u -> user, \W is basename, the rest are terminal colors
