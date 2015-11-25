@@ -70,4 +70,12 @@ Plugin 'Syntastic'
 Plugin 'EasyMotion'
 Plugin 'Command-T'
 
+map <F2> :NERDTreeToggle<CR>
+map <F4> :GundoToggle<CR>
+" Press F3 to toggle highlighting on/off, and show current value.
+noremap <F3> :set hlsearch! hlsearch?<CR>
+
+" c-support
+let g:C_UseTool_cmake    = 'yes'
+let g:C_UseTool_doxygen  = 'yes'
 " end-of-file
