@@ -6,6 +6,8 @@ set softtabstop=4
 set noexpandtab
 set tabstop=4
 set incsearch
+vnoremap // y/<C-R>"<CR>
+
 "colorscheme desert
 syntax enable
 set background=dark
