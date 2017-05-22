@@ -18,6 +18,7 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/lib64
 alias valgrind="/usr/bin/valgrind -v --leak-check=full --show-reachable=yes --tool=memcheck --track-origins=yes --log-file=\"./valgrind_log\""
 # User specific aliases and functions
 
+alias vi='vim'
 alias sl='ls -al'
 alias lstree='tree -aC ./ -I .svn'
 alias bin='cd ../out/Linux26'
