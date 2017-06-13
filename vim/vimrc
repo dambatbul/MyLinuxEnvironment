@@ -1,4 +1,16 @@
 "set exrc
+set encoding=utf-8
+set smarttab
+set showmode
+set tw=72
+set hlsearch
+set ignorecase
+
+set expandtab
+set cinoptions=p0,t0,+4,(0,u4,U1,:0
+set formatoptions=tcroq
+set comments=sr:/*,mb:*,ex:*/,://
+
 set secure
 set autoindent
 set shiftwidth=4
