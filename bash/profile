@@ -35,6 +35,8 @@ export GREP_COLOR='1;32'
 alias tf='tail -f '
 alias sl='ls -al'
 alias lstree='tree -aC ./ -I .svn'
+alias tfd=logtfd
+logtfd () { tail -f /usr/local/ttt.log  | awk '/INFO/ {print "\033[32m" $0 "\033[39m"} /ERROR/ {print "\033[31m" $0 "\033[39m"} /NOTIFY/ {print "\033[33m" $0 "\033[39m"} /WARN/ {print "\033[91m" $0 "\033[39m"} /DEBUG/'; }
 
 export GIT_EDITOR=/usr/bin/vim
 export VISUAL=/usr/bin/vim
