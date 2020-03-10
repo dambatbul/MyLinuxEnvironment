@@ -20,50 +20,13 @@ set tabstop=4
 set incsearch
 vnoremap // y/<C-R>"<CR>
 
-"colorscheme desert
-syntax enable
-set background=dark
-let g:solarized_termtrans=1
-let g:solarized_visibility = "high"
-let g:solarized_contrast = "high"
-"if !has("gui_running")
-"	let g:solarized_termtrans=1
-"	let g:solarized_termcolors=256
-"endif
-colorscheme solarized
-
-set nocompatible              " be iMproved, required
-filetype off                  " required
-
-" Pathogen load
-call pathogen#infect()
-call pathogen#helptags()
-
-filetype plugin indent on
-syntax on
-
-"for Python
-set foldmethod=indent
-set foldlevel=99
-
+" 접근했을때 마지막으로 수정한 곳에서 커서를 위치합니다.
+au BufReadPost *
+\ if line("'\"") > 0 && line("'\"") <= line("$") |
+\ exe "norm g`\"" |
+\ endif
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim
-call vundle#begin()            " required
-
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-" plugin on GitHub repo
-Plugin 'tpope/vim-fugitive'
-" git repos on your local machine (i.e. when working on your own plugin)
-"Plugin 'file:///home/gmarik/path/to/plugin'
-" Avoid a name conflict with L9
-Plugin 'L9', {'name': 'newL9'}
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-
-
 " Brief help
 " :PluginList       - lists configured plugins
 " :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
@@ -72,22 +35,47 @@ call vundle#end()            " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+"set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=~/.vim/bundle/vundle
+call vundle#begin()            " required
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'L9', {'name': 'newL9'}
 Plugin 'ctrlp.vim'
 Plugin 'fugitive.vim'
 Plugin 'Gundo'
 Plugin 'NERD_tree-Project'
 Plugin 'The-NERD-tree'
 Plugin 'highlight.vim'
+Plugin 'tpope/vim-fugitive'
 Plugin 'Syntastic'
 Plugin 'EasyMotion'
 Plugin 'Command-T'
+Plugin 'dracula/vim',{'name': 'dracula'}
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
 
+filetype plugin indent on    " required
+
+syntax on
+color dracula
+
+" for vim-airline
+" let g:airline#extensions#tabline#enabled = 1 " turn on buffer list
+let g:airline_solarized_bg='dark'
+let g:airline_theme='luna'
+set laststatus=2 " turn on bottom bar
+
+" for NERDTree
 map <F2> :NERDTreeToggle<CR>
 map <F4> :GundoToggle<CR>
 " Press F3 to toggle highlighting on/off, and show current value.
 noremap <F3> :set hlsearch! hlsearch?<CR>
 
-" c-support
+" for c-support
 let g:C_UseTool_cmake    = 'yes'
 let g:C_UseTool_doxygen  = 'yes'
+
 " end-of-file
